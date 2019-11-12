@@ -1,0 +1,20 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+requests = {extras = ["security"],version = "*"}
+pyopenssl = "*"
+idna = "*"
+ndg-httpsclient = "*"
+pyasn1 = "*"
+certifi = "*"
+urllib3 = "*"
+configparser = "*"
+flask = "*"
+
+[requires]
+python_version = "3.6"
