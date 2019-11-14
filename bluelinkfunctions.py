@@ -8,7 +8,8 @@ def login(headers, username, password):
 
   return json_response['result']['accessToken']
 
-def logout(authheaders, accesstoken):
+def logout(headers, accesstoken):
+  authheaders = dict(headers)
   authheaders['accessToken'] = accesstoken
   payload = "{}"
   r = requests.post("https://mybluelink.ca/tods/api/lgout", headers=authheaders, data=payload)
@@ -16,8 +17,9 @@ def logout(authheaders, accesstoken):
   
   return json_response['responseHeader']['responseCode']
 
-def get_pauth(authheaders, accesstoken, pin):
+def get_pauth(headers, accesstoken, pin):
   payload = "{\"pin\":\"" + pin + "\"}"
+  authheaders = dict(headers)
   authheaders['accessToken'] = accesstoken
   r = requests.post("https://mybluelink.ca/tods/api/vrfypin", headers=authheaders, data=payload)
   json_response = r.json()
@@ -26,8 +28,9 @@ def get_pauth(authheaders, accesstoken, pin):
 
 #def get_status():
 
-def req_unlock(authheaders, accesstoken, pauth, pin, carid):
+def req_unlock(headers, accesstoken, pauth, pin, carid):
   payload = "{\"pin\":\"" + pin + "\"}"
+  authheaders = dict(headers)
   authheaders['accessToken'] = accesstoken
   authheaders['pAuth'] = pauth
   authheaders['vehicleId'] = carid
@@ -36,8 +39,9 @@ def req_unlock(authheaders, accesstoken, pauth, pin, carid):
 
   return json_response['responseHeader']['responseCode']
 
-def req_lock(authheaders, accesstoken, pauth, pin, carid):
+def req_lock(headers, accesstoken, pauth, pin, carid):
   payload = "{\"pin\":\"" + pin + "\"}"
+  authheaders = dict(headers)
   authheaders['accessToken'] = accesstoken
   authheaders['pAuth'] = pauth
   authheaders['vehicleId'] = carid

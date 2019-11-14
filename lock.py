@@ -12,5 +12,6 @@ headers = {'Pragma': 'no-cache', 'Origin': 'https://mybluelink.ca', 'language': 
 
 accesstoken = login(headers, username, password)
 pauth = get_pauth(headers, accesstoken, pin)
-print ( req_lock(headers, accesstoken, pauth, pin, carid) )
+#print ( req_lock(headers, accesstoken, pauth, pin, carid) )
 print ( logout(headers, accesstoken) )
+print ( headers )
