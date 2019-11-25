@@ -4,6 +4,7 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pylint = "*"
 
 [packages]
 requests = {extras = ["security"],version = "*"}
@@ -18,3 +19,6 @@ flask = "*"
 
 [requires]
 python_version = "3.6"
+flask = "*"
+requests = {extras = ["security"],version = "*"}
+configparser = "*"
