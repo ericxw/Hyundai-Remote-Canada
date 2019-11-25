@@ -6,11 +6,19 @@ Since Hyundai doesn't have Google Assistant/Home integration in Canada, this is 
 *The Hyundai Canada site is pretty slow, so don't expect fast responses.
 *This is currently a work in progress. Will remove this note once ready.
 
+# Docker
+Substitute values based on your deployment.
+## Build
+./build.sh
+## Run
+./run.sh 8080
+
 # API
+Substitute values based on your deployment.
 ## Lock
-GET http://<address or domain>:<port>/lock
+GET http://localhost:8080/lock
 ## Unlock
-GET http://<address or domain>:<port>/unlock
+GET http://localhost:8080/unlock
 
 # Status
 ## Working
