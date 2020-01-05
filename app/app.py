@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask,request
 import bluelinkfunctions
 from bluelinkfunctions import login,logout,get_pauth,req_unlock,req_lock
 import configparser
@@ -9,6 +9,7 @@ username = os.environ['USERNAME']
 password = os.environ['PASSWORD']
 carid = os.environ['CARID']
 pin = os.environ['PIN']
+key = os.environ['KEY']
 
 headers = {'Pragma': 'no-cache', 'Origin': 'https://mybluelink.ca', 'language': '0', 'offset': '-5', 'Accept-Language': 'en-US,en;q=0.9', 'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.62 Mobile Safari/537.36', 'content-type': 'application/json;charset=UTF-8', 'Accept': 'application/json, text/plain, */*', 'Cache-Control': 'no-cache', 'Referer': 'https://mybluelink.ca/login', 'Connection': 'keep-alive', 'from': 'CWP'}
 
@@ -20,19 +21,25 @@ def home():
 
 @app.route("/lock")
 def lock():
-    accesstoken = login(headers, username, password)
-    pauth = get_pauth(headers, accesstoken, pin)
-    print ( req_lock(headers, accesstoken, pauth, pin, carid) )
-    print ( logout(headers, accesstoken) )
-    return "Lock"
+    if request.form.get('key') == key:
+      accesstoken = login(headers, username, password)
+      pauth = get_pauth(headers, accesstoken, pin)
+      print ( req_lock(headers, accesstoken, pauth, pin, carid) )
+      print ( logout(headers, accesstoken) )
+      return "Lock"
+    else:
+      return "Key failed"
 
 @app.route("/unlock")
 def unlock():
-    accesstoken = login(headers, username, password)
-    pauth = get_pauth(headers, accesstoken, pin)
-    print ( req_unlock(headers, accesstoken, pauth, pin, carid) )
-    print ( logout(headers, accesstoken) )
-    return "Unlock"
+    if request.form.get('key') == key:
+      accesstoken = login(headers, username, password)
+      pauth = get_pauth(headers, accesstoken, pin)
+      print ( req_unlock(headers, accesstoken, pauth, pin, carid) )
+      print ( logout(headers, accesstoken) )
+      return "Unlock"
+    else:
+      return "Key failed"
 
 @app.route("/start")
 def start():
