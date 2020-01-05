@@ -11,7 +11,8 @@ Substitute values based on your deployment.
 ## Build
 ./build.sh
 ## Run
-./run.sh 8080
+Remember to create your own docker-compose.yml from example provided.
+docker-compose up -d
 
 # API
 Substitute values based on your deployment.
