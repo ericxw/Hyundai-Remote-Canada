@@ -1,0 +1,12 @@
+version: '3'
+services:
+  hyundai-remote-canada:
+    image: hyundai-remote-canada
+    ports:
+    - 8080:5000
+    environment:
+      USERNAME: johndoe@somemail.com
+      PASSWORD: ABCDefg1234
+      CARID: AOASDFUOIlajfdoi
+      PIN: 0000
+      KEY: 20983aifj9jlakdsf

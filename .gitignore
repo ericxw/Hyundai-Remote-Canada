@@ -3,6 +3,7 @@ test_scripts/
 remote.conf
 .vscode/
 *.swp
+docker-compose.yml
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
