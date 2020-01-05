@@ -1,4 +1,4 @@
-FROM	python:3.6-buster
+FROM	python:3.6-slim-buster
 RUN	pip install pipenv
 COPY	app/* /app/
 COPY	Pipfile* /tmp/
