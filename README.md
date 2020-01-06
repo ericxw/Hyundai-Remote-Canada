@@ -20,16 +20,22 @@ Substitute values based on your deployment.
 GET http://localhost:8080/lock
 ## Unlock
 GET http://localhost:8080/unlock
+## Start
+GET http://localhost:8080/start
+## Stop
+GET http://localhost:8080/stop
 
 # Status
 ## Working
 - Single car via configuration file
 - Unlock/Lock car
 - Docker container
-## Todo
-- Get vehicle status
-- Start car
-- Start car with profile (set temperature, etc.)
+- Start car (with hard coded winter profile for now)
 - Stop car
 - Docker entrypoint to handle config through env vars
-- API endpoint security (TBD: let user handle via API gateway or include key handling?)
+- API endpoint security
+## Todo
+- Get vehicle status
+- Support multiple vehicles
+- Read remote start profiles
+- Start car with profile (set temperature, etc.)

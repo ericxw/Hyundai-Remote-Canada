@@ -1,7 +1,7 @@
 import os
 from flask import Flask,request
 import bluelinkfunctions
-from bluelinkfunctions import login,logout,get_pauth,req_unlock,req_lock
+from bluelinkfunctions import login,logout,get_pauth,req_unlock,req_lock,req_engine_start,req_engine_stop
 username = os.environ['USERNAME']
 password = os.environ['PASSWORD']
 carid = os.environ['CARID']
@@ -21,9 +21,9 @@ def lock():
     if request.form.get('key') == key:
       accesstoken = login(headers, username, password)
       pauth = get_pauth(headers, accesstoken, pin)
-      print ( req_lock(headers, accesstoken, pauth, pin, carid) )
-      print ( logout(headers, accesstoken) )
-      return "Lock"
+      response = str(req_lock(headers, accesstoken, pauth, pin, carid))
+      logout(headers, accesstoken)
+      return response
     else:
       return "Key failed"
 
@@ -32,19 +32,33 @@ def unlock():
     if request.form.get('key') == key:
       accesstoken = login(headers, username, password)
       pauth = get_pauth(headers, accesstoken, pin)
-      print ( req_unlock(headers, accesstoken, pauth, pin, carid) )
-      print ( logout(headers, accesstoken) )
-      return "Unlock"
+      response = str(req_unlock(headers, accesstoken, pauth, pin, carid))
+      logout(headers, accesstoken)
+      return response
     else:
       return "Key failed"
 
 @app.route("/start")
 def start():
-    return "Start"
+    if request.form.get('key') == key:
+      accesstoken = login(headers, username, password)
+      pauth = get_pauth(headers, accesstoken, pin)
+      response = str(req_engine_start(headers, accesstoken, pauth, pin, carid))
+      logout(headers, accesstoken)
+      return response
+    else:
+      return "Key failed"
 
 @app.route("/stop")
 def stop():
-    return "Stop"
+    if request.form.get('key') == key:
+      accesstoken = login(headers, username, password)
+      pauth = get_pauth(headers, accesstoken, pin)
+      response = str(req_engine_stop(headers, accesstoken, pauth, pin, carid))
+      logout(headers, accesstoken)
+      return response
+    else:
+      return "Key failed"
     
 if __name__ == "__main__":
-    app.run(debug=True,host="0.0.0.0")
+    app.run(debug=False,host="0.0.0.0")
