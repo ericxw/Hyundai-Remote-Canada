@@ -2,9 +2,6 @@ import os
 from flask import Flask,request
 import bluelinkfunctions
 from bluelinkfunctions import login,logout,get_pauth,req_unlock,req_lock
-import configparser
-config = configparser.ConfigParser()
-config.read('remote.conf')
 username = os.environ['USERNAME']
 password = os.environ['PASSWORD']
 carid = os.environ['CARID']
