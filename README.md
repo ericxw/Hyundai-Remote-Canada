@@ -5,11 +5,11 @@ The goal is to create a service that one can run under docker (I run in GKE), th
 
 # Notes
 
-*The Hyundai Canada site is pretty slow, so expect remote commands to take around 1min to execute
-*This is currently a work in progress.
-*Some parameters like CARID in docker-compose.yaml file needs to be retrieved from looking at POST data on bluelink website when making a call. This can be resolved using "friendly name" via a small update to the code, which will likely be handled via multi-car capability in the future. (I don't have two cars so if anyone wants to tackle and create pull request, please feel free)
-*With minimal development experience and this being my first public project, pardon my sloppy code.
-*Constructive criticisms welcome!
+- The Hyundai Canada site is pretty slow, so expect remote commands to take around 1min to execute
+- This is currently a work in progress
+- Some parameters like CARID in docker-compose.yaml file needs to be retrieved from looking at POST data on bluelink website when making a call. This can be resolved using "friendly name" via a small update to the code, which will likely be handled via multi-car capability in the future. (I don't have two cars so if anyone wants to tackle and create pull request, please feel free)
+- With minimal development experience and this being my first public project, pardon my sloppy code.
+- Constructive criticisms welcome!
 
 # Docker
 Substitute values based on your deployment.
@@ -29,6 +29,9 @@ GET http://localhost:8080/unlock
 GET http://localhost:8080/start
 ## Stop
 GET http://localhost:8080/stop
+
+# Authentiation
+Submit authentication as "key=<auth_key>" as part of the GET request via x-www-form-urlencoded method for the time being. This works well with IFTTT.
 
 # Status
 ## Working
