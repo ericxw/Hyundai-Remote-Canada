@@ -1,11 +1,11 @@
 # Hyundai-Remote-Canada
-Since Hyundai doesn't have Google Assistant/Home integration in Canada and it takes 5min to do anything with the official app, this is an attempt to make it available via web calls to their portal.
+Since Hyundai Bluelink doesn't have Google Assistant/Home integration in Canada and it takes 5min to do anything with the official app, this is an attempt to make it available via web calls to their portal.
 
 The goal is to create a service that one can run under docker (I run in GKE), that IFTTT can call, thus allowing voice command. Currently this works for a single car, with lock, unlock, start, and stop functions.
 
 # Notes
 
-- The Hyundai Canada site is pretty slow, so expect remote commands to take around 1min to execute
+- The Hyundai Canada Bluelink site is pretty slow, so expect remote commands to take around 1min to execute
 - This is currently a work in progress
 - Some parameters like CARID in docker-compose.yaml file needs to be retrieved from looking at POST data on bluelink website when making a call. This can be resolved using "friendly name" via a small update to the code, which will likely be handled via multi-car capability in the future. (I don't have two cars so if anyone wants to tackle and create pull request, please feel free)
 - With minimal development experience and this being my first public project, pardon my sloppy code.
