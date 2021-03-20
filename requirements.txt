@@ -8,7 +8,7 @@ cryptography==2.8
 flask==1.1.1
 idna==2.8
 itsdangerous==1.1.0
-jinja2==2.10.3
+jinja2==2.11.3
 markupsafe==1.1.1
 ndg-httpsclient==0.5.1
 pyasn1==0.4.8
